@@ -1,16 +1,19 @@
 <?php
 
-$html = file_get_contents("http://youtube.com");
+function getError($url)
+{
+	$headers = get_headers($url,1);
 
-$dom = new DOMDocument();
-$dom->loadHTML($html);
-$nodes = $dom->getElementsByTagName('h3');
-foreach ($nodes as $node) {
-    $text = $node->nodeValue;
-    if (strpos($text, 'with') !==false)
-    {
-    	echo "found"."<br>";
-    }
+	if ($headers[0] == 'HTTP/1.1 200 OK')
+	{
+		$url = $url . "'";
+
+		$contents = file_get_contents($url);
+
+		return $contents;
+	}
+
+	return NULL;
 }
-
-//readfile("http://youtube.com"); displays webpage in browser
+var_dump(getError("http://www.cideko.com/pro_con.php?id=3"));
+?>

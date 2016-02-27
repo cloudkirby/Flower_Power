@@ -1,0 +1,11 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: sans=seriff;
+	font-size: 10pt;
+	padding-top: 40px;
+	color: #444;
+	overflow: auto;
+}

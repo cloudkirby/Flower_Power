@@ -1,4 +1,5 @@
 <?php
+/*
 function getError($url)
 {
 	$headers = get_headers($url,1);
@@ -15,4 +16,15 @@ function getError($url)
 	return NULL;
 }
 var_dump(getError("http://www.bible-history.com/subcat.php?id=22"));
+*/
+
+$url = "http://www.bible-history.com/subcat.php?id=22";
+$column = 1;
+if ($column = 1)
+{
+	$orderUrl = $url . " order by " . $column;
+	$column++;
+	$contents = file_get_contents($orderUrl);
+	var_dump($contents);
+}
 ?>

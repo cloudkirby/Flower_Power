@@ -73,6 +73,7 @@ class dvwaProbe
 	}
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,15 +90,15 @@ class dvwaProbe
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-			<a href="" class="navbar-brand">Flowerpower</a>
-			<ul class="nav navbar-nav">
-				<li><a href="placerholder">placerholder</a>
-			</ul>
+			<a href="" class="navbar-brand">P<sup>2</sup></a>
 		</div>
 	</nav>
 	<div class="jumbotron">
-		<div class="container text-center">
-			<h1>Flower Power</h1>
+		<div class="container">
+            <div class="text-center">
+			<h1>P<sup>2</sup></h1>
+            <h3>SQL Injection</h3>
+            </div>
 			<?php if ($_POST): ?>
                 <?php 
                     $url = $_POST["url"];
@@ -107,24 +108,25 @@ class dvwaProbe
                 <iframe src="<?php echo $data?>" width="1000" height="600"></iframe>
             <?php else: ?>
                 <form method="POST" action="">
-                    <div>
-                        <input type="text" placeholder="Website URL" class="" name="url">
+                    <div class="form-group">
+                        <label>Website URL</label>
+                        <input class="form-control" type="url" placeholder="Website URL" name="url" required>
                     </div>
-                    <div>
-                        <select name="sqlQuery">
+                    <div class="form-group">
+                        <label>SQL Query</label>
+                        <select class="form-control" name="sqlQuery">
                             <option value="getDatabase">Get Database</option>
                             <option value="getTables">Get Tables</option>
                             <option value="getUsers">Get Users</option>
                             <option value="getVersion">Get Version</option> 
-                        </select>                           
+                        </select>
                     </div>
                     <div>
                         <button type="submit" class="btn btn-lg btn-warning"> Submit</button>
                     </div>
                 </form>
             <?php endif; ?>
-		</div>
-        
+		</div>        
 	</div>
 	<script src=""http://code.jquery.com/jquery-2.2.1.min.js"">
 	<!-- Latest compiled and minified JavaScript -->

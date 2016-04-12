@@ -72,18 +72,7 @@ class Probe
 
 		return $contents;
 
-		//get first occuring number and replace with sql injection code
+		//get first occurring number and replace with sql injection code
 	}
 }
-
-$probe = new Probe("http://www.slavsandtatars.com/about.php?id=25");
-/*
-$testError = $probe->getError();
-
-$testColumn = $probe->getColumnNum();
-
-$testVulnerable = $probe->getVulnerable();
-
-var_dump($testColumn);
-*/
 ?>

@@ -16,9 +16,9 @@ class portScan
 	{
 		error_reporting(0);
 
-		$url = $_SERVER['argv'][1];
-		$startP = $_SERVER['argv'][2];
-		$endP = $_SERVER['argv'][3];	
+		$url = $_SERVER["argv"][1];
+		$startP = $_SERVER["argv"][2];
+		$endP = $_SERVER["argv"][3];	
 		$delay = 1;
 		
 		/**
@@ -27,23 +27,28 @@ class portScan
 		* @param string $url, int $startP, int $endP
 		* @return string
 		*/
-		if($_SERVER['argc'] != 4);
+		if($_SERVER["argc"] != 4);
 		
 		for($i = $startP; $i <= $endP; $i++)
 		{
 			$fp = fsockopen($url, $i, $errno, $errstr, $delay);
-			if(getservbyport($i, 'top') == '') $protocol = 'unknown'; 
-			else $protocol = getservbyport($i, 'top');
-			
-			if($fp) 
+            
+			if(getservbyport($i, "top") == "")
+            {
+                $protocol = "unknown";
+            } 
+			else $protocol = getservbyport($i, "top");
 			{
-				print  'port $i [$protocol] on $url is active' . '\n';
-				fclose($fp);
-			}
-				else
-				{
-				print 'port $i [$protocol] on $url is inactive' . '\n';
-				}
+                if($fp) 
+                {
+                    print  "port $i [$protocol] on $url is active" . "\n";
+                    fclose($fp);
+                }
+                else
+                {
+                    print "port $i [$protocol] on $url is inactive" . "\n";
+                }
+            }
 		}
 		flush();	
 	}
@@ -83,11 +88,10 @@ class portScan
                     $url = $_POST['url'];
 					$startP = $_POST['startP'];
 					$endP = $_POST['endP'];
-					
+
                     $portScan = new portScan($url, $startP, $endP);
                     $portScan->scanner();
-
-                ?>
+                 ?>
             <?php else: ?>
                 <form method='POST' action=''>
                     <div class='form-group'>
